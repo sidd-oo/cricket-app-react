@@ -1,15 +1,19 @@
 import React from "react";
 import TableRow from "./TableRow";
-import {paginationPerPageSize} from "../../constants/constants";
+import { paginationPerPageSize } from "../../constants/constants";
+import TableError from "../../assets/images/table__error.png";
 
-const TableBody = ({playersList, pageNo}) => {
+const TableBody = ({ playersList, pageNo }) => {
   return (
-    <tbody className="divide-y-4 divide-white">
-      {
-        playersList?.slice(pageNo*paginationPerPageSize - paginationPerPageSize, pageNo*paginationPerPageSize)?.map((player)=>{
-          return <TableRow key={player._id} player={player}/>
-        })
-      }
+    <tbody className="w-full divide-y-4 divide-white ">
+      {playersList
+        ?.slice(
+          pageNo * paginationPerPageSize - paginationPerPageSize,
+          pageNo * paginationPerPageSize
+        )
+        ?.map((player) => {
+          return <TableRow key={player._id} player={player} />;
+        })}
     </tbody>
   );
 };

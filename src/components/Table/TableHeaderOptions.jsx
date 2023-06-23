@@ -1,6 +1,6 @@
 import React from "react";
 
-const TableHeaderOptions = () => {
+const TableHeaderOptions = ({ searchValue, setSearchValue }) => {
   return (
     <div className="flex items-center justify-between px-2 pt-3">
       <div className="relative ">
@@ -8,6 +8,9 @@ const TableHeaderOptions = () => {
           type="text"
           className="w-full rounded-md border-2 border-gray-200 p-3 py-1 pl-10 text-sm outline-none hover:border-gray-400 active:border-gray-500"
           placeholder="Search Player..."
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-4">
           <svg
@@ -24,27 +27,27 @@ const TableHeaderOptions = () => {
       </div>
 
       <div className="flex items-center space-x-2">
-          <button className=" rounded-md py-1 text-sm shadow-sm ">
-            <span className="flex items-center space-x-2 rounded-md border-2 border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-600 hover:border-gray-400 hover:bg-gray-50 active:border-gray-500">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                  />
-                </svg>
-              </div>
-              <span>Filters</span>
-            </span>
-          </button>
+        <button className=" rounded-md py-1 text-sm shadow-sm ">
+          <span className="flex items-center space-x-2 rounded-md border-2 border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-600 hover:border-gray-400 hover:bg-gray-50 active:border-gray-500">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-3 w-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                />
+              </svg>
+            </div>
+            <span>Filters</span>
+          </span>
+        </button>
       </div>
     </div>
   );
