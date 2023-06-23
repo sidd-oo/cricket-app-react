@@ -3,8 +3,6 @@ import Home from './pages/Home';
 import TableContainer from './components/Table/TableContainer'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +15,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 
 function App() {
   return (

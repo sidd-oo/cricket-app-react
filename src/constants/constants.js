@@ -1,0 +1,1 @@
+export const paginationPerPageSize = 5;
