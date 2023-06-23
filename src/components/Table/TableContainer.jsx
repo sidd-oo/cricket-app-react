@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 import TableHeaderOptions from "./TableHeaderOptions";
 import Pagination from "../Pagination";
+import getPlayers from "../../data/getPlayers";
 
 const TableContainer = () => {
+  const [playersList, setPlayersList] = useState([]);
+  // console.log(playersList);
+
+  useEffect(() => {
+    const getPlayersList = async () => {
+      let response = await getPlayers();
+      setPlayersList(response);
+    };
+    getPlayersList();
+  }, []);
+
+  console.log(playersList);
   return (
     <div className="mx-auto p-10">
       <div className="min-h-screen text-gray-900">
@@ -17,7 +30,7 @@ const TableContainer = () => {
             <div className="flex w-full flex-col rounded-lg border p-1.5">
               <table className="min-w-full">
                 <TableHeader />
-                <TableBody />
+                <TableBody playersList={playersList}/>
               </table>
               <Pagination />
             </div>
