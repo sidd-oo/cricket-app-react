@@ -1,16 +1,20 @@
 import './App.css';
-import Home from './pages/Home';
-import TableContainer from './components/Table/TableContainer'
+import Main from './pages/Main';
+import TableContainer from './pages/Home'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Main />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <TableContainer />,
+      },
+      {
+        path: "/player",
+        element: <h1>Hey Player</h1>,
       },
     ],
   },

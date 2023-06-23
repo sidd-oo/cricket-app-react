@@ -1,7 +1,6 @@
 import React from "react";
 import TableRow from "./TableRow";
 import { paginationPerPageSize } from "../../constants/constants";
-import TableError from "../../assets/images/table__error.png";
 
 const TableBody = ({ playersList, pageNo }) => {
   return (
