@@ -7,7 +7,7 @@ import getPlayers from "../../data/getPlayers";
 
 const TableContainer = () => {
   const [playersList, setPlayersList] = useState([]);
-  // console.log(playersList);
+  const [pageNo, setPageNo] = useState(1);
 
   useEffect(() => {
     const getPlayersList = async () => {
@@ -30,9 +30,9 @@ const TableContainer = () => {
             <div className="flex w-full flex-col rounded-lg border p-1.5">
               <table className="min-w-full">
                 <TableHeader />
-                <TableBody playersList={playersList}/>
+                <TableBody playersList={playersList} pageNo={pageNo} />
               </table>
-              <Pagination />
+              <Pagination pageNo={pageNo} setPageNo={setPageNo} playersList={playersList}/>
             </div>
           </div>
         </main>
