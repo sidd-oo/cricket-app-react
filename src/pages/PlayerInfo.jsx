@@ -28,14 +28,20 @@ const PlayerInfo = () => {
 
   return (
     <>
-      <div className="mx-auto mt-5 w-[80%]">
-        <Link to="/" className="underline">
-          Back to Cricketers
+      <div className="mx-auto my-10 mt-5 w-[80%]">
+        <Link to="/" className="text-xl font-bold">
+          <h2>
+            &lt;&lt;{" "}
+            <span className="font-bold underline">Back to Cricketers</span>
+          </h2>
         </Link>
       </div>
       <div className="mx-auto w-[80%] flex-col items-start justify-center gap-20 ">
         <PlayerCard currentPlayer={currentPlayer} />
-        <PlayersSuggestion playersList={playersList} currentPlayer={currentPlayer}/>
+        <PlayersSuggestion
+          playersList={playersList}
+          currentPlayer={currentPlayer}
+        />
       </div>
     </>
   );
