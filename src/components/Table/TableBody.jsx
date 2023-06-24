@@ -11,7 +11,7 @@ const TableBody = ({ playersList, pageNo }) => {
           pageNo * paginationPerPageSize
         )
         ?.map((player) => {
-          return <TableRow key={player._id} player={player} />;
+          return <TableRow key={player.id} player={player} />;
         })}
     </tbody>
   );

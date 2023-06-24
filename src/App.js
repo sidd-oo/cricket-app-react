@@ -1,6 +1,8 @@
 import './App.css';
 import Main from './pages/Main';
 import TableContainer from './pages/Home'
+import PlayerInfo from './pages/PlayerInfo'
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -13,8 +15,8 @@ const router = createBrowserRouter([
         element: <TableContainer />,
       },
       {
-        path: "/player",
-        element: <h1>Hey Player</h1>,
+        path: "/player/:playerId",
+        element: <PlayerInfo/>,
       },
     ],
   },

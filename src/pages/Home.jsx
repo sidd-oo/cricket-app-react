@@ -31,7 +31,6 @@ const Home = () => {
     setFilteredPlayersList(searchPlayersByName(searchValue));
   }, [searchValue]);
 
-  console.log(playersList);
   return (
     <div className="p-10">
       <div className="h-screen text-gray-900">
