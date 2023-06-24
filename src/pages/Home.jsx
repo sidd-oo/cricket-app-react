@@ -23,8 +23,8 @@ const Home = () => {
 
   useEffect(() => {
     const searchPlayersByName = (searchValue) => {
-      return playersList.filter((player) => {
-        return player.name.toLowerCase().includes(searchValue.toLowerCase());
+      return playersList?.filter((player) => {
+        return player?.name?.toLowerCase().includes(searchValue?.toLowerCase());
       });
     };
 
@@ -45,7 +45,10 @@ const Home = () => {
             />
             <div className="flex w-full flex-col rounded-lg border p-1.5">
               <table>
-                <TableHeader />
+                <TableHeader
+                  filteredPlayersList={filteredPlayersList}
+                  setFilteredPlayersList={setFilteredPlayersList}
+                />
                 <TableBody playersList={filteredPlayersList} pageNo={pageNo} />
               </table>
               {filteredPlayersList.length === 0 && (
