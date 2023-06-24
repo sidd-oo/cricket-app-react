@@ -21,9 +21,9 @@ const PlayersSuggestion = ({ playersList, currentPlayer }) => {
 
   if (recommendedPlayer?.length !== 0) {
     return (
-      <div>
+      <div className="mb-20">
         <h1 className="mt-10 text-xl font-bold text-gray-700">
-          More Players you might be interested in:
+          More {currentPlayer?.type} you might be interested in:
         </h1>
         <div className="flex flex-wrap gap-5">
           {recommendedPlayer?.map((player) => (
