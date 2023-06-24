@@ -17,6 +17,9 @@ const PlayerCard = ({ currentPlayer }) => {
                   Rank: {currentPlayer?.rank}
                 </span>
                 <span className="mr-4 text-sm font-bold text-gray-500">
+                  Type: {currentPlayer?.type[0].toUpperCase()+currentPlayer?.type.slice(1)}
+                </span>
+                <span className="mr-4 text-sm font-bold text-gray-500">
                   Points: {currentPlayer?.points}
                 </span>
                 <span className="mr-4 text-sm font-bold text-gray-500">
