@@ -57,7 +57,8 @@ const FilterDropDown = ({
     <div
       className="mt-2 flex h-fit w-fit flex-col items-center justify-center rounded border border-gray-300 bg-white px-3 py-4 shadow-lg hover:bg-gray-100 "
     >
-      <button className="mb-1 rounded-full bg-blue-400 px-7 py-0.5">
+      <button className="mb-1 rounded-full bg-blue-400 px-7 py-0.5"
+      onClick={() => handleFilter("batsman")}>
         Batsman
       </button>
       <button
