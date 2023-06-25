@@ -17,22 +17,38 @@ const Home = () => {
     const getPlayersList = async () => {
       let response = await getPlayers();
       setPlayersList(response);
-      const storedData = localStorage.getItem("filteredPlayersList");
-      if (storedData !== null) {
-        setFilteredPlayersList(JSON.parse(storedData));
+      const storedFilteredData = localStorage.getItem("filteredPlayersList");
+      const storedFilteredTag = localStorage.getItem("currentFilterType");
+
+      if (storedFilteredData !== null) {
+        setFilteredPlayersList(JSON.parse(storedFilteredData));
       } else {
-        setFilteredPlayersList( [...response]);
+        setFilteredPlayersList([...response]);
+      }
+      if (storedFilteredTag !== null) {
+        setCurrentFilterType(JSON.parse(storedFilteredTag));
       }
     };
     getPlayersList();
   }, []);
 
   useEffect(() => {
-    if(filteredPlayersList.length > 0){
-      localStorage.setItem('filteredPlayersList', JSON.stringify(filteredPlayersList));
+    if (currentFilterType !== null) {
+      localStorage.setItem(
+        "currentFilterType",
+        JSON.stringify(currentFilterType)
+      );
+    }
+  }, [currentFilterType]);
+
+  useEffect(() => {
+    if (filteredPlayersList.length > 0) {
+      localStorage.setItem(
+        "filteredPlayersList",
+        JSON.stringify(filteredPlayersList)
+      );
     }
   }, [filteredPlayersList]);
-
 
   useEffect(() => {
     const searchPlayersByName = (searchValue) => {
