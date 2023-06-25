@@ -11,6 +11,7 @@ const Home = () => {
   const [pageNo, setPageNo] = useState(1);
   const [searchValue, setSearchValue] = useState(null);
   const [filteredPlayersList, setFilteredPlayersList] = useState([]);
+  const [currentFilterType, setCurrentFilterType] = useState(null);
 
   useEffect(() => {
     const getPlayersList = async () => {
@@ -40,9 +41,11 @@ const Home = () => {
           </h1>
           <div className="mx-auto mb-4">
             <TableHeaderOptions
+              searchValue={searchValue}
               setSearchValue={setSearchValue}
               playersList={playersList}
               setFilteredPlayersList={setFilteredPlayersList}
+              setCurrentFilterType={setCurrentFilterType}
             />
             <div className="flex w-full flex-col rounded-lg border p-1.5">
               <table>
@@ -65,7 +68,11 @@ const Home = () => {
                 <Pagination
                   pageNo={pageNo}
                   setPageNo={setPageNo}
-                  playersList={filteredPlayersList}
+                  playersList={playersList}
+                  filteredPlayersList={filteredPlayersList}
+                  setFilteredPlayersList={setFilteredPlayersList}
+                  currentFilterType={currentFilterType}
+                  setCurrentFilterType={setCurrentFilterType}
                 />
               )}
             </div>

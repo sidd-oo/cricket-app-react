@@ -4,6 +4,8 @@ const FilterDropDown = ({
   setIsFilterDropDownOpen,
   playersList,
   setFilteredPlayersList,
+  setCurrentFilterType,
+  setSearchValue
 }) => {
   const dropdownRef = useRef(null);
 
@@ -14,7 +16,7 @@ const FilterDropDown = ({
   //   useEffect(() => {
   //     const handleOutsideClick = (event) => {
   //       if (
-  //         dropdownRef.current &&
+  //         dropdownRef.current && 
   //         !dropdownRef.current.contains(event.target) &&
   //         !event.target.matches("#dropdown-button")
   //       ) {
@@ -41,6 +43,8 @@ const FilterDropDown = ({
   }, []);
 
   const handleFilter = (type) => {
+    setSearchValue("")
+    setCurrentFilterType(type[0].toUpperCase()+type.slice(1));
     setFilteredPlayersList(playersList.filter((player) => {
         return player.type === type;
       })

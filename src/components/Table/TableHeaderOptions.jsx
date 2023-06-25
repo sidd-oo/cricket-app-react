@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FilterDropDown from "../FilterDropDown";
 
-const TableHeaderOptions = ({ playersList, setFilteredPlayersList, setSearchValue }) => {
+const TableHeaderOptions = ({ playersList, setFilteredPlayersList,searchValue, setSearchValue, setCurrentFilterType }) => {
   const [isFilterDropDownOpen, setIsFilterDropDownOpen] = useState(false);
   return (
     <div className="flex items-center justify-between px-2 pt-3">
@@ -10,6 +10,7 @@ const TableHeaderOptions = ({ playersList, setFilteredPlayersList, setSearchValu
           type="text"
           className="w-full rounded-md border-2 border-gray-200 p-3 py-1 pl-10 text-sm outline-none hover:border-gray-400 active:border-gray-500"
           placeholder="Search Player..."
+          value={searchValue}
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
@@ -62,6 +63,8 @@ const TableHeaderOptions = ({ playersList, setFilteredPlayersList, setSearchValu
               playersList={playersList}
               setFilteredPlayersList ={setFilteredPlayersList}
               setIsFilterDropDownOpen={setIsFilterDropDownOpen}
+              setCurrentFilterType={setCurrentFilterType}
+              setSearchValue={setSearchValue}
             />
           </div>
         )}
