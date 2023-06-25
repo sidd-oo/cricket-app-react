@@ -3,6 +3,7 @@ import PlayerCard from "../components/PlayerCard";
 import PlayersSuggestion from "../components/PlayersSuggestion";
 import { Link, useParams } from "react-router-dom";
 import getPlayers from "../data/getPlayers";
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 
 const PlayerInfo = () => {
   const { playerId } = useParams();
@@ -28,15 +29,13 @@ const PlayerInfo = () => {
 
   return (
     <>
-      <div className="mx-auto my-10 mt-5 w-[80%]">
-        <Link to="/" className="text-xl font-bold">
-          <h2>
-            &lt;&lt;{" "}
-            <span className="font-bold underline">Back to Cricketers</span>
-          </h2>
+      <div className="mx-auto mb-5 mt-5 w-[80%]">
+        <Link to="/" className="text-xl font-bold flex items-center gap-3">
+            <BsFillArrowLeftCircleFill />
+            <span className="text-xl font-bold underline text-gray-700">Back to Cricketers</span>
         </Link>
       </div>
-      <div className="mx-auto w-[80%] flex-col items-start justify-center gap-20 ">
+      <div className="mx-auto w-[80%] flex-col gap-20 ">
         <PlayerCard currentPlayer={currentPlayer} />
         <PlayersSuggestion
           playersList={playersList}
