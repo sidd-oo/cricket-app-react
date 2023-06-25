@@ -21,7 +21,7 @@ const TableHeader = ({ filteredPlayersList, setFilteredPlayersList }) => {
       return 0;
     };
 
-    const sortedPlayers = [...players].sort(compareFunction);
+    const sortedPlayers = [...players]?.sort(compareFunction);
     const sortedList =
       sortOrder === "asc" ? sortedPlayers : sortedPlayers.reverse();
     setFilteredPlayersList(sortedList);

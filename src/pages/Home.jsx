@@ -4,12 +4,12 @@ import TableBody from "../components/Table/TableBody";
 import TableHeaderOptions from "../components/Table/TableHeaderOptions";
 import Pagination from "../components/Pagination";
 import getPlayers from "../data/getPlayers";
-import TableError from "../assets//images/table__error.png";
+import TableError from "../assets/images/table__error.png";
 
 const Home = () => {
   const [playersList, setPlayersList] = useState([]);
   const [pageNo, setPageNo] = useState(1);
-  const [searchValue, setSearchValue] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
   const [filteredPlayersList, setFilteredPlayersList] = useState([]);
   const [currentFilterType, setCurrentFilterType] = useState(null);
 
@@ -17,10 +17,22 @@ const Home = () => {
     const getPlayersList = async () => {
       let response = await getPlayers();
       setPlayersList(response);
-      setFilteredPlayersList(response);
+      const storedData = localStorage.getItem("filteredPlayersList");
+      if (storedData !== null) {
+        setFilteredPlayersList(JSON.parse(storedData));
+      } else {
+        setFilteredPlayersList( [...response]);
+      }
     };
     getPlayersList();
   }, []);
+
+  useEffect(() => {
+    if(filteredPlayersList.length > 0){
+      localStorage.setItem('filteredPlayersList', JSON.stringify(filteredPlayersList));
+    }
+  }, [filteredPlayersList]);
+
 
   useEffect(() => {
     const searchPlayersByName = (searchValue) => {
@@ -28,9 +40,13 @@ const Home = () => {
         return player?.name?.toLowerCase().includes(searchValue?.toLowerCase());
       });
     };
-
+    setCurrentFilterType(null);
     setFilteredPlayersList(searchPlayersByName(searchValue));
   }, [searchValue]);
+
+  useEffect(() => {
+    setPageNo(1);
+  }, [currentFilterType]);
 
   return (
     <div className="p-10">
@@ -55,7 +71,7 @@ const Home = () => {
                 />
                 <TableBody playersList={filteredPlayersList} pageNo={pageNo} />
               </table>
-              {filteredPlayersList.length === 0 && (
+              {filteredPlayersList?.length === 0 && (
                 <div className="ml-70 my-10 flex items-center justify-center">
                   <img
                     src={TableError}
@@ -64,7 +80,7 @@ const Home = () => {
                   />
                 </div>
               )}
-              {filteredPlayersList.length !== 0 && (
+              {filteredPlayersList?.length !== 0 && (
                 <Pagination
                   pageNo={pageNo}
                   setPageNo={setPageNo}

@@ -30,7 +30,7 @@ const Pagination = ({
     if (
       selectedPage >= 1 &&
       selectedPage <=
-        Math.ceil(filteredPlayersList.length / paginationPerPageSize) &&
+        Math.ceil(filteredPlayersList?.length / paginationPerPageSize) &&
       selectedPage !== pageNo
     ) {
       setPageNo(selectedPage);
@@ -61,7 +61,7 @@ const Pagination = ({
         />
         {[
           ...Array(
-            Math.ceil(filteredPlayersList.length / paginationPerPageSize)
+            Math.ceil(filteredPlayersList?.length / paginationPerPageSize)
           ),
         ].map((_, i) => {
           return (
