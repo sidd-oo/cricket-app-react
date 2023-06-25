@@ -30,12 +30,13 @@ const TableHeaderOptions = ({ searchValue, setSearchValue }) => {
 
       <div className="relative flex items-center space-x-2">
         <button
+          id="dropdown-button"
           className=" rounded-md py-1 text-sm shadow-sm "
           onClick={() => {
             setIsFilterDropDownOpen(!isFilterDropDownOpen);
           }}
         >
-          <span className="flex items-center space-x-2 rounded-md border-2 border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-600 hover:border-gray-400 hover:bg-gray-50 active:border-gray-500">
+          <span className="flex items-center space-x-2 rounded-md border-2 border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-600 hover:border-gray-400 hover:bg-gray-50 focus:outline-none active:border-gray-500">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +58,10 @@ const TableHeaderOptions = ({ searchValue, setSearchValue }) => {
         </button>
         {isFilterDropDownOpen && (
           <div className="absolute right-0 top-8">
-            <FilterDropDown />
+            <FilterDropDown
+              isFilterDropDownOpen={isFilterDropDownOpen}
+              setIsFilterDropDownOpen={setIsFilterDropDownOpen}
+            />
           </div>
         )}
       </div>
