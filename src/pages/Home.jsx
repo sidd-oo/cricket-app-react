@@ -40,8 +40,9 @@ const Home = () => {
           </h1>
           <div className="mx-auto mb-4">
             <TableHeaderOptions
-              searchValue={searchValue}
               setSearchValue={setSearchValue}
+              playersList={playersList}
+              setFilteredPlayersList={setFilteredPlayersList}
             />
             <div className="flex w-full flex-col rounded-lg border p-1.5">
               <table>

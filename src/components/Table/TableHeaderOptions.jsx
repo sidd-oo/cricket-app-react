@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FilterDropDown from "../FilterDropDown";
 
-const TableHeaderOptions = ({ searchValue, setSearchValue }) => {
+const TableHeaderOptions = ({ playersList, setFilteredPlayersList, setSearchValue }) => {
   const [isFilterDropDownOpen, setIsFilterDropDownOpen] = useState(false);
   return (
     <div className="flex items-center justify-between px-2 pt-3">
@@ -59,7 +59,8 @@ const TableHeaderOptions = ({ searchValue, setSearchValue }) => {
         {isFilterDropDownOpen && (
           <div className="absolute right-0 top-8">
             <FilterDropDown
-              isFilterDropDownOpen={isFilterDropDownOpen}
+              playersList={playersList}
+              setFilteredPlayersList ={setFilteredPlayersList}
               setIsFilterDropDownOpen={setIsFilterDropDownOpen}
             />
           </div>
