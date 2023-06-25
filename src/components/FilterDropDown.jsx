@@ -1,33 +1,35 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 
 const FilterDropDown = ({
   setIsFilterDropDownOpen,
   playersList,
   setFilteredPlayersList,
   setCurrentFilterType,
-  setSearchValue
+  setSearchValue,
+  dropdownRef
 }) => {
-  const dropdownRef = useRef(null);
+ 
 
   const closeDropdown = () => {
     setIsFilterDropDownOpen(false);
   };
 
-  //   useEffect(() => {
-  //     const handleOutsideClick = (event) => {
-  //       if (
-  //         dropdownRef.current && 
-  //         !dropdownRef.current.contains(event.target) &&
-  //         !event.target.matches("#dropdown-button")
-  //       ) {
-  //         closeDropdown();
-  //       }
-  //     };
-  //     document.addEventListener("click", handleOutsideClick);
-  //     return () => {
-  //       document.removeEventListener("click", handleOutsideClick);
-  //     };
-  //   }, []);
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+
+        closeDropdown();
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   useEffect(() => {
     const handleEscapeKey = (event) => {
@@ -35,7 +37,6 @@ const FilterDropDown = ({
         closeDropdown();
       }
     };
-
     document.addEventListener("keydown", handleEscapeKey);
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
@@ -43,9 +44,10 @@ const FilterDropDown = ({
   }, []);
 
   const handleFilter = (type) => {
-    setSearchValue("")
-    setCurrentFilterType(type[0].toUpperCase()+type.slice(1));
-    setFilteredPlayersList(playersList.filter((player) => {
+    setSearchValue("");
+    setCurrentFilterType(type[0].toUpperCase() + type.slice(1));
+    setFilteredPlayersList(
+      playersList.filter((player) => {
         return player.type === type;
       })
     );
@@ -54,12 +56,8 @@ const FilterDropDown = ({
   return (
     <div
       className="mt-2 flex h-fit w-fit flex-col items-center justify-center rounded border border-gray-300 bg-white px-3 py-4 shadow-lg hover:bg-gray-100 "
-      ref={dropdownRef}
     >
-      <button
-        className="mb-1 rounded-full bg-blue-400 px-7 py-0.5"
-        onClick={() => handleFilter("batsman")}
-      >
+      <button className="mb-1 rounded-full bg-blue-400 px-7 py-0.5">
         Batsman
       </button>
       <button

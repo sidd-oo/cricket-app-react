@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import FilterDropDown from "../FilterDropDown";
 
 const TableHeaderOptions = ({
@@ -9,6 +9,7 @@ const TableHeaderOptions = ({
   setCurrentFilterType,
 }) => {
   const [isFilterDropDownOpen, setIsFilterDropDownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   return (
     <div className="flex items-center justify-between px-2 pt-3">
       <div className="relative ">
@@ -42,6 +43,7 @@ const TableHeaderOptions = ({
           onClick={() => {
             setIsFilterDropDownOpen(!isFilterDropDownOpen);
           }}
+          ref={dropdownRef}
         >
           <span className="flex items-center space-x-2 rounded-md border-2 border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-600 hover:border-gray-400 hover:bg-gray-50 focus:outline-none active:border-gray-500">
             <div>
@@ -71,6 +73,7 @@ const TableHeaderOptions = ({
               setIsFilterDropDownOpen={setIsFilterDropDownOpen}
               setCurrentFilterType={setCurrentFilterType}
               setSearchValue={setSearchValue}
+              dropdownRef={dropdownRef}
             />
           </div>
         )}
