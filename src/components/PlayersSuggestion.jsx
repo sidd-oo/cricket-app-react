@@ -26,7 +26,7 @@ const PlayersSuggestion = ({ playersList, currentPlayer }) => {
           More {currentPlayer?.type} you might be interested in:
         </h1>
         <div className="flex flex-wrap gap-5">
-          {recommendedPlayer?.map((player) => (
+          {recommendedPlayer?.slice(0,4)?.map((player) => (
             <PlayerCard key={player.id} currentPlayer={player} />
           ))}
         </div>
